@@ -6,12 +6,18 @@ const Countries = () => {
   const [filteredCountries, setFilteredCountries] = useState([]);
   const [inputText, setInputText] = useState('');
   
-  let debounceTimer; // Declare debounceTimer variable (not in state)
+  let debounceTimer;
 
   const debounceSearch = (inputText) => {
+    if (!inputText) {
+      setFilteredCountries(countries);
+      return;
+    }
+
     const filtered = countries.filter((country) =>
       country.name.common.toLowerCase().includes(inputText.toLowerCase())
     );
+
     setFilteredCountries(filtered.slice(0, 3));
   };
 
@@ -50,7 +56,7 @@ const Countries = () => {
       />
       <div style={{ margin: '20px', display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
         {filteredCountries.map((country) => (
-          <div key={country.name.common}>
+          <div className='countryCard' key={country.name.common}>
             <Country name={country.name.common} flag={country.flags.png} />
           </div>
         ))}
