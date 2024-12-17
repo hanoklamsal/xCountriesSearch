@@ -12,7 +12,7 @@ const Countries = () => {
     const filtered = countries.filter((country) =>
       country.name.common.toLowerCase().includes(inputText.toLowerCase())
     );
-    setFilteredCountries(filtered);
+    setFilteredCountries(filtered.slice(0, 3));
   };
 
   const changeHandler = (e) => {
