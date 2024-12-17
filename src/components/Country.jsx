@@ -2,7 +2,7 @@ import React from 'react'
 
 const Country = ({name,flag}) => {
   return (
-    <div className='countryCard' style={{
+    <div style={{
         textAlign:"center",
         verticalAlign:"middle",
         border:"solid 1px gray",
